@@ -1,15 +1,15 @@
 import {test, expect} from '../fixtures/custom-fixtures';
 import {GET_BOOKS_LIST, ONE_BOOK_MOCK} from "../mocks/book-mocks";
 
-test.describe('login tests', () => {
-    test.skip('login title', async ({page}) => {
+test.describe('Тесты на demoqa.com', () => {
+    test.skip('Проверка, что мы на странице логина', async ({page}) => {
         await page.goto('https://demoqa.com/login', {waitUntil: "domcontentloaded"})
         const title = page.locator('//h1')
 
         await expect(title).toHaveText('Login')
     })
 
-    test('positive login', async ({app}) => {
+    test('Позитивная авторизация', async ({app}) => {
         const userName = process.env.USER_NAME
         const password = process.env.PASSWORD
 
@@ -24,7 +24,7 @@ test.describe('login tests', () => {
         await app.profilePage.shouldHaveUserNameTitleText(userName)
     })
 
-    test('failed login', async ({app}) => {
+    test('Не корректный логин', async ({app}) => {
         const userName = process.env.USER_NAME
         const password = 'qwe'
 
@@ -34,12 +34,12 @@ test.describe('login tests', () => {
         await app.loginPage.shouldHaveErrorMessage('Invalid username or password!')
     })
 
-    test('login button exist', async ({app}) => {
+    test('Проверка что кнопка логина существует', async ({app}) => {
         await app.mainPage.visit()
         await app.mainPage.shouldHaveLoginButton()
     })
 
-    test('mocked one book', async ({app, mock, page}) => {
+    test('Проверка названия замоканой книги', async ({app, mock, page}) => {
         await mock.routeGET(GET_BOOKS_LIST, ONE_BOOK_MOCK)
 
         // await page.pause()
@@ -49,34 +49,34 @@ test.describe('login tests', () => {
         await app.mainPage.shouldHaveBookTitleName('The Darkness That Comes Before')
     })
 
-    test('second tab', async ({app}) => {
+    test('Проверка открытия новой вкладки', async ({app}) => {
         await app.browserWindowsPage.visit()
         const newTab = await app.browserWindowsPage.openNewTab()
 
         await expect(newTab).toHaveURL('/sample')
     })
 
-    test('failing test', async () => {
+    test('Зафейленый тест', async () => {
         expect(true).toEqual(false)
     })
 })
 
 // test
-test.describe('parametrized tests', () => {
+test.describe('Параметризированные тесты для проверки названий книг', () => {
     test.beforeAll(async () => {
-        console.log('This works BEFORE ALL tests')
+        console.log('Эта штука отрабатывает ДО всех тестов')
     })
 
     test.afterAll(async () => {
-        console.log('This works AFTER ALL tests')
+        console.log('Эта штука отрабатывает ПОСЛЕ всех тестов')
     })
 
     test.beforeEach(async ({}, testInfo) => {
-        console.log(`Test '${testInfo.title}' started`)
+        console.log(`Тест '${testInfo.title}' начался. Отрабатывает ДО каждого теста`)
     })
 
     test.afterEach(async ({}, testInfo) => {
-        console.log(`Test '${testInfo.title}' ended`)
+        console.log(`Тест '${testInfo.title}' завершился. Отрабатывает ПОСЛЕ каждого теста`)
     });
 
     const bookNames = [
@@ -91,7 +91,7 @@ test.describe('parametrized tests', () => {
     ]
 
     for (const bookName of bookNames) {
-        test(`test book title: ${bookName}`, async ({page}) => {
+        test(`Проверка названия книги: ${bookName}`, async ({page}) => {
             await page.goto('https://demoqa.com/books', {waitUntil: 'domcontentloaded'})
 
             const bookNameElement = page.locator('//div[@role="gridcell"]//a', {hasText: bookName})
