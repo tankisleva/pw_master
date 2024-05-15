@@ -23,6 +23,20 @@ test.describe('Тесты на demoqa.com', () => {
         await app.profilePage.shouldBeOpened()
         await app.profilePage.shouldHaveUserNameTitleText(userName)
     })
+    test('Позитивная авторизация номер два', async ({app}) => {
+        const userName = process.env.USER_NAME
+        const password = "sfs"
+
+        await test.step('test steps', async () => {
+            await app.loginPage.visit()
+            await app.loginPage.fillUserInput(userName)
+            await app.loginPage.fillPasswordInput(password)
+            await app.loginPage.clickLoginButton()
+        })
+
+        await app.profilePage.shouldBeOpened()
+        await app.profilePage.shouldHaveUserNameTitleText(userName)
+    })
 
     test('Не корректный логин', async ({app}) => {
         const userName = process.env.USER_NAME
