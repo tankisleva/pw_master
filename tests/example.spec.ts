@@ -61,6 +61,7 @@ test.describe('login tests', () => {
     })
 })
 
+// test
 test.describe('parametrized tests', () => {
     test.beforeAll(async () => {
         console.log('This works BEFORE ALL tests')
