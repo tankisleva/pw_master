@@ -25,7 +25,7 @@ test.describe('Тесты на demoqa.com', () => {
     })
     test('Позитивная авторизация номер два', async ({app}) => {
         const userName = process.env.USER_NAME
-        const password = "sfs"
+        const password =  process.env.PASSWORD
 
         await test.step('test steps', async () => {
             await app.loginPage.visit()
@@ -35,7 +35,7 @@ test.describe('Тесты на demoqa.com', () => {
         })
 
         await app.profilePage.shouldBeOpened()
-        await app.profilePage.shouldHaveUserNameTitleText(userName)
+        await app.profilePage.shouldHaveUserNameTitleText("lalalal")
     })
 
     test('Не корректный логин', async ({app}) => {
