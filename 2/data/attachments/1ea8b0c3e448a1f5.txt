@@ -1,3 +1,0 @@
-Test 'test book title: Speaking JavaScript' started
-Test 'test book title: Speaking JavaScript' ended
-This works AFTER ALL tests

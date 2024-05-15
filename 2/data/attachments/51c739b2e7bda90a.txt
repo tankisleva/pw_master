@@ -1,3 +1,0 @@
-This works BEFORE ALL tests
-Test 'test book title: Git Pocket Guide' started
-Test 'test book title: Git Pocket Guide' ended
