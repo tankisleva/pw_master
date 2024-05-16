@@ -1,5 +1,6 @@
 import {BasePage} from "./BasePage";
 import {Page} from "@playwright/test";
+import {test} from "../fixtures/custom-fixtures";
 
 export class BrowserWindowsPage extends BasePage {
     public readonly newPageButton = this.page.locator('//*[@id="tabButton"]')
@@ -9,11 +10,14 @@ export class BrowserWindowsPage extends BasePage {
     }
 
     public async openNewTab() {
-        const [newPage] = await Promise.all([
-            this.page.context().waitForEvent('page'),
-            this.newPageButton.click()
-        ])
+        await test.step(`Открываем новую табу`, async () => {
+            const [newPage] = await Promise.all([
+                this.page.context().waitForEvent('page'),
+                this.newPageButton.click()
+            ])
 
-        return newPage
+            return newPage
+        })
     }
+
 }

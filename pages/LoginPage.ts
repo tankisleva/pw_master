@@ -1,5 +1,6 @@
 import {expect, Page} from "@playwright/test";
 import {BasePage} from "./BasePage";
+import {test} from "../fixtures/custom-fixtures";
 
 export class LoginPage extends BasePage {
     private readonly userNameInput = this.page.locator('#userName')
@@ -17,21 +18,30 @@ export class LoginPage extends BasePage {
     }
 
     public async fillUserInput(userName: string) {
-        await this.userNameInput.fill(userName)
+        await test.step(`Заполняем поле userName следующим значением ${userName}`, async () => {
+            await this.userNameInput.fill(userName)
+        })
     }
 
     public async fillPasswordInput(password: string) {
-        await this.passwordInput.fill(password)
+        await test.step(`Заполняем поле passwrod следующим значением ${password}`, async () => {
+            await this.passwordInput.fill(password)
+        })
     }
 
     public async clickLoginButton() {
-        await this.loginButton.click()
+        await test.step(`Нажимаем на кнопку логина`, async () => {
+            await this.loginButton.click()
+        })
     }
 
     // assertions
 
     public async shouldHaveErrorMessage(errorText: string) {
-        const errorMessage = this.page.getByText(errorText, {exact: true})
-        await expect(errorMessage).toBeVisible()
+        await test.step(`Проверяем, что пишется сообщение об ошибке: ${errorText}`, async () => {
+            const errorMessage = this.page.getByText(errorText, {exact: true})
+            await expect(errorMessage).toBeVisible()
+        })
+
     }
 }

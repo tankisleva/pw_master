@@ -9,13 +9,13 @@ export abstract class BasePage {
     }
 
     public async visit() {
-        await test.step(`going to '${this.constructor.name}' by url ${this.url}`, async () => {
+        await test.step(`Переходим на страницу '${this.constructor.name}' по url ${this.url}`, async () => {
             await this.page.goto(this.url, {waitUntil: 'domcontentloaded'})
         })
     }
 
     public async shouldBeOpened() {
-        await test.step(`Checking that ${this.constructor.name} opened with url ${this.url}`, async () => {
+        await test.step(`Проверяем, что страница ${this.constructor.name} открыта со следующим url ${this.url}`, async () => {
             await expect(this.page).toHaveURL(this.url)
         })
     }

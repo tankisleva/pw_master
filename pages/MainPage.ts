@@ -1,5 +1,6 @@
 import {expect, Page} from "@playwright/test";
 import {BasePage} from "./BasePage";
+import {test} from "../fixtures/custom-fixtures";
 
 export class MainPage extends BasePage {
     private readonly loginButton = this.page.locator('//button[@id="login"]')
@@ -16,14 +17,20 @@ export class MainPage extends BasePage {
     // assertions
 
     public async shouldHaveLoginButton() {
-        await expect(this.loginButton).toBeVisible()
+        await test.step(`Проверяем, что кнопка логина видима и доступна`, async () => {
+            await expect(this.loginButton).toBeVisible()
+        })
     }
 
     public async shouldHaveCountOfBookTitles(count: number) {
-        await expect(this.bookTitle).toHaveCount(count)
+        await test.step(`Проверяем, что количество книг равно: ${count}`, async () => {
+            await expect(this.bookTitle).toHaveCount(count)
+        })
     }
 
     public async shouldHaveBookTitleName(bookTitle: string) {
-        await expect(this.bookTitle).toHaveText(bookTitle)
+        await test.step(`Проверяем, что книга содержит следующий тайтл: ${bookTitle}`, async () => {
+            await expect(this.bookTitle).toHaveText(bookTitle)
+        })
     }
 }
