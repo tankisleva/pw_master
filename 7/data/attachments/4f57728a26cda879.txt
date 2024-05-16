@@ -1,2 +1,0 @@
-Тест 'Проверка названия книги: Learning JavaScript Design Patterns' начался. Отрабатывает ДО каждого теста
-Тест 'Проверка названия книги: Learning JavaScript Design Patterns' завершился. Отрабатывает ПОСЛЕ каждого теста
