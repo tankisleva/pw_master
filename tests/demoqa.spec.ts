@@ -12,14 +12,13 @@ test.describe('Тесты на demoqa.com', () => {
     test('Позитивная авторизация', async ({app}) => {
         const userName = process.env.USER_NAME
         const password = process.env.PASSWORD
+        await app.loginPage.visit()
 
-        await test.step('test steps', async () => {
-            await app.loginPage.visit()
+        await test.step('Заполняем поля логин и пароль', async () => {
             await app.loginPage.fillUserInput(userName)
             await app.loginPage.fillPasswordInput(password)
-            await app.loginPage.clickLoginButton()
         })
-
+        await app.loginPage.clickLoginButton()
         await app.profilePage.shouldBeOpened()
         await app.profilePage.shouldHaveUserNameTitleText(userName)
     })
