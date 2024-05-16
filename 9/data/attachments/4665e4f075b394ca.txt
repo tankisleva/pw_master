@@ -1,0 +1,2 @@
+Тест 'Проверка названия книги: Programming JavaScript Applications' начался. Отрабатывает ДО каждого теста
+Тест 'Проверка названия книги: Programming JavaScript Applications' завершился. Отрабатывает ПОСЛЕ каждого теста
