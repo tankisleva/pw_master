@@ -24,7 +24,7 @@ export class LoginPage extends BasePage {
     }
 
     public async fillPasswordInput(password: string) {
-        await test.step(`Заполняем поле passwrod следующим значением ${password}`, async () => {
+        await test.step(`Заполняем поле password следующим значением ${password}`, async () => {
             await this.passwordInput.fill(password)
         })
     }

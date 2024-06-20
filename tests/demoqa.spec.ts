@@ -34,7 +34,7 @@ test.describe('Тесты на demoqa.com', () => {
         })
 
         await app.profilePage.shouldBeOpened()
-        await app.profilePage.shouldHaveUserNameTitleText("lalalal")
+        await app.profilePage.shouldHaveUserNameTitleText(userName)
     })
 
     test('Не корректный логин', async ({app}) => {
@@ -55,7 +55,7 @@ test.describe('Тесты на demoqa.com', () => {
     test('Проверка названия замоканой книги', async ({app, mock, page}) => {
         await mock.routeGET(GET_BOOKS_LIST, ONE_BOOK_MOCK)
 
-        // await page.pause()
+         await page.pause()
 
         await app.mainPage.visit()
         await app.mainPage.shouldHaveCountOfBookTitles(1)
