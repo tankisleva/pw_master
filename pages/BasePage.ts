@@ -14,6 +14,10 @@ export abstract class BasePage {
         })
     }
 
+
+    //sfsfsfsfsfsfsf
+    //sfsfsfsfsf
+    //gdgdgdgdg
     public async shouldBeOpened() {
         await test.step(`Проверяем, что страница ${this.constructor.name} открыта со следующим url ${this.url}`, async () => {
             await expect(this.page).toHaveURL(this.url)
