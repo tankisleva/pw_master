@@ -73,6 +73,7 @@ test.describe('Mark all as completed', () => {
   test.beforeEach(async ({ page }) => {
     await createDefaultTodos(page);
     await checkNumberOfTodosInLocalStorage(page, 3);
+    //sfsfsfsfsf
   });
 
   test.afterEach(async ({ page }) => {
